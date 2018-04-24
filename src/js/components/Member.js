@@ -4,11 +4,11 @@ import socketIOClient from 'socket.io-client';
 export default class Member extends React.Component {
     constructor() {
         super();
-        this.state = {class: "list-group-item list-group-item-action", endpoint: "http://umdbmtnsignins.herokuapp.com"};
+        this.state = {class: "list-group-item list-group-item-action", endpoint: "https://umdbmtnsignins.herokuapp.com"};
     }
 
     send() {
-        let socket = socketIOClient("http://umdbmtnsignins.herokuapp.com");
+        let socket = socketIOClient("https://umdbmtnsignins.herokuapp.com");
         socket.emit('refresh', this.props.name, (data) => {
             socket.removeAllListeners();
             socket.disconnect();
@@ -16,7 +16,7 @@ export default class Member extends React.Component {
     }
 
     sendRevert() {
-        let socket = socketIOClient("http://umdbmtnsignins.herokuapp.com");
+        let socket = socketIOClient("https://umdbmtnsignins.herokuapp.com");
         socket.emit('revert', this.props.name, (data) => {
             socket.removeAllListeners();
             socket.disconnect();

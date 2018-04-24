@@ -10,7 +10,7 @@ export default class Layout extends React.Component {
         super();
         this.state = {members: [], registered: [], endpoint: "https://umdbmtnsignins.herokuapp.com"};
         var currDate = new Date();
-        fetch('http://umdbmtnsignins.herokuapp.com/getdata', {
+        fetch('https://umdbmtnsignins.herokuapp.com/getdata', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -28,7 +28,7 @@ export default class Layout extends React.Component {
         this.socket = socketIOClient(this.state.endpoint);
         this.socket.on('refresh', (n) => {
             var currDate = new Date();
-            fetch('http://umdbmtnsignins.herokuapp.com/signin', {
+            fetch('https://umdbmtnsignins.herokuapp.com/signin', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -45,7 +45,7 @@ export default class Layout extends React.Component {
 
         this.socket.on('revert', (n) => {
             var currDate = new Date();
-            fetch('http://umdbmtnsignins.herokuapp.com/signout', {
+            fetch('https://umdbmtnsignins.herokuapp.com/signout', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
