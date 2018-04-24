@@ -15,13 +15,15 @@ export default class List extends React.Component {
         var refresh = this.props.refresh;
         var registered = this.props.registered;
         var counter = 0;
-        let filtered = this.props.members.filter(e => e.toLowerCase().indexOf(this.state.search) !== -1);
+        let filtered = this.props.members
         filtered = filtered.map(member => {
             return(member.split(" ").map(v => v.charAt(0).toUpperCase() + v.substring(1)).join(" "));
         });
         filtered = filtered.map(member => {
             return(member.split("-").map(v => v.charAt(0).toUpperCase() + v.substring(1)).join("-"));
         });
+        filtered[filtered.indexOf("Huayang Peng")] = "Jerry Peng";
+        filtered = filtered.filter(e => e.toLowerCase().indexOf(this.state.search) !== -1);
         return (
             <div class="container" id="list">
                 <div class="row justify-content-center">
@@ -32,7 +34,7 @@ export default class List extends React.Component {
                             class="center-block"
                             src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Maryland_Terrapins_logo.svg"
                         />
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" onChange={this.searchHandler.bind(this)}/>
+                        <input type="text" class="form-control" placeholder="Name" onChange={this.searchHandler.bind(this)}/>
                     </div>
                 </div>
                 <div class="row justify-content-center" id="memberlist">

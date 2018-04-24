@@ -24,6 +24,7 @@
 }
 .list-group {
     padding-top: 10px;
+    min-height: 650px;
 }
 .center-block {
     display: block;
@@ -43,4 +44,7 @@
 .form-control {
     margin-top: 5%;
     height: 50px;
+}
+.toast-container {
+    text-align: center;
 }

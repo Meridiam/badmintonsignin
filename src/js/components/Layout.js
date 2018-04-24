@@ -1,5 +1,6 @@
 import React from 'react';
 import socketIOClient from 'socket.io-client';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -9,8 +10,8 @@ export default class Layout extends React.Component {
     constructor() {
         super();
         this.state = {members: [], registered: [], endpoint: "https://umdbmtnsignins.herokuapp.com"};
-        var currDate = new Date();
-        fetch('https://umdbmtnsignins.herokuapp.com/getdata', {
+            var currDate = new Date();
+            fetch('https://umdbmtnsignins.herokuapp.com/getdata', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -40,7 +41,8 @@ export default class Layout extends React.Component {
                 })
             })
             .then(response => response.json())
-            .then(data => {this.setState({members: this.state.members, registered: data["registered"], endpoint: "https://umdbmtnsignins.herokuapp.com"});});
+            .then(data => {this.setState({members: this.state.members, registered: data["registered"], endpoint: "https://umdbmtnsignins.herokuapp.com"});
+                    toast(n+" is now signed in!", {type: toast.TYPE.SUCCESS});});
         });
 
         this.socket.on('revert', (n) => {
@@ -57,17 +59,20 @@ export default class Layout extends React.Component {
                 })
             })
             .then(response => response.json())
-            .then(data => {this.setState({members: this.state.members, registered: data["registered"], endpoint: "https://umdbmtnsignins.herokuapp.com"});});
+            .then(data => {this.setState({members: this.state.members, registered: data["registered"], endpoint: "https://umdbmtnsignins.herokuapp.com"});
+                        toast(n+" is now signed out!", {type: toast.TYPE.ERROR});});
         });
     }
 
     componentWillUnmount() {
+        this.socket.removeAllListeners();
         this.socket.close();
     }
 
     render() {
         return (
             <div class="body">
+                <ToastContainer toastClassName='toast-container' hideProgressBar={true} autoClose={2000} closeButton={false}/>
                 <Header />
                 <List members={this.state.members} registered={this.state.registered}/>
                 <Footer />

@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Meridiam/badmintonsignin#readme",
   "dependencies": {
+    "react-notification-system": "^0.2.17",
+    "react-toastify": "^4.0.0-rc.5",
     "socket.io-client": "^2.1.0"
   },
   "devDependencies": {
