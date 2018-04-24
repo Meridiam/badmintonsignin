@@ -22,7 +22,6 @@ export default class List extends React.Component {
         filtered = filtered.map(member => {
             return(member.split("-").map(v => v.charAt(0).toUpperCase() + v.substring(1)).join("-"));
         });
-        filtered[filtered.indexOf("Huayang Peng")] = "Jerry Peng";
         filtered = filtered.filter(e => e.toLowerCase().indexOf(this.state.search) !== -1).sort();
         return (
             <div class="container" id="list">
