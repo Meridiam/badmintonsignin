@@ -23,7 +23,7 @@ export default class List extends React.Component {
             return(member.split("-").map(v => v.charAt(0).toUpperCase() + v.substring(1)).join("-"));
         });
         filtered[filtered.indexOf("Huayang Peng")] = "Jerry Peng";
-        filtered = filtered.filter(e => e.toLowerCase().indexOf(this.state.search) !== -1);
+        filtered = filtered.sort().filter(e => e.toLowerCase().indexOf(this.state.search) !== -1);
         return (
             <div class="container" id="list">
                 <div class="row justify-content-center">
