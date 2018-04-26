@@ -6,10 +6,10 @@ import Header from './Header';
 import Footer from './Footer';
 import List from './List';
 
-export default class Layout extends React.Component {
+export default class Roster extends React.Component {
     constructor() {
         super();
-        this.state = {members: [], registered: [], endpoint: "https://umdbmtnsignins.herokuapp.com"};
+        this.state = {members: [], registered: [], endpoint: "https://umdbmtnsignins.herokuapp.com", loader: 'loader', loaderContainer: 'loader-container'};
             var currDate = new Date();
             fetch('https://umdbmtnsignins.herokuapp.com/getdata', {
                 method: 'POST',
@@ -22,7 +22,7 @@ export default class Layout extends React.Component {
                 })
             })
             .then(response => response.json())
-            .then(data => this.setState({ members: data["roster"], registered: data["registered"], endpoint: "https://umdbmtnsignins.herokuapp.com"}));
+            .then(data => {this.setState({ members: data["roster"], registered: data["registered"], endpoint: "https://umdbmtnsignins.herokuapp.com", loader: '', loaderContainer: ''})});
     }
 
     componentDidMount() {
@@ -71,11 +71,9 @@ export default class Layout extends React.Component {
 
     render() {
         return (
-            <div class="body">
+            <div>
                 <ToastContainer toastClassName='toast-container' hideProgressBar={true} autoClose={2000} closeButton={false}/>
-                <Header />
-                <List members={this.state.members} registered={this.state.registered}/>
-                <Footer />
+                <List members={this.state.members} registered={this.state.registered} loader={this.state.loader} loaderContainer={this.state.loaderContainer}/>
             </div>
         );
     }

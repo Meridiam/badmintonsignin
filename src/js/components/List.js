@@ -4,7 +4,7 @@ import Member from './Member'
 export default class List extends React.Component {
     constructor() {
         super();
-        this.state = {search: ''};
+        this.state = {search: '', loading: "true"};
     }
 
     searchHandler(event) {
@@ -33,8 +33,15 @@ export default class List extends React.Component {
                             class="center-block"
                             src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Maryland_Terrapins_logo.svg"
                         />
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-8 align-self-center">
                         <input type="text" class="form-control" placeholder="Name" onChange={this.searchHandler.bind(this)}/>
                     </div>
+                </div>
+                <div class={this.props.loaderContainer}>
+                    <div class={this.props.loader}></div>
                 </div>
                 <div class="row justify-content-center" id="memberlist">
                     <div class="col-8 align-self-center">
@@ -52,3 +59,8 @@ export default class List extends React.Component {
         );
     }
 }
+
+List.defaultProps = {
+    loader: '',
+    loaderContainer: ''
+};
