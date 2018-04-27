@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/Meridiam/badmintonsignin#readme",
   "dependencies": {
+    "chart.js": "^2.7.2",
     "history": "^1.17.0",
+    "react-chartjs": "^1.2.0",
+    "react-chartjs-2": "^2.7.0",
     "react-notification-system": "^0.2.17",
     "react-router-dom": "^4.2.2",
     "react-toastify": "^4.0.0-rc.5",
