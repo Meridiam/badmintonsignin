@@ -37,7 +37,7 @@ export default class List extends React.Component {
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-8 align-self-center">
-                        <input type="text" class="form-control" placeholder="Name" onChange={this.searchHandler.bind(this)}/>
+                        <input type="text" class="form-control" placeholder="Search" onChange={this.searchHandler.bind(this)}/>
                     </div>
                 </div>
                 <div class={this.props.loaderContainer}>

@@ -9,6 +9,13 @@ export default class Statistics extends React.Component {
         fetch('https://umdbmtnsignins.herokuapp.com/getstats')
         .then(response => response.json())
         .then(res => {
+            res["practices"].sort((a, b) => {
+                if (a["date"] < b["date"])
+                    return -1;
+                if (a["date"] > b["date"])
+                    return 1;
+                return 0;
+            });
             let chartData = res["practices"].map(v => v["registered"].length);
             let chartLabels = res["practices"].map(v => v["date"]);
             var data = {
@@ -44,11 +51,8 @@ export default class Statistics extends React.Component {
         return (
             <div class="container" id="list">
                 <div class="row justify-content-center">
-                    <div class="col-8 align-self-center">
-                        <div class="chart-container">
-                            <Line data={this.state.chartData}/>
-                        </div>
-                    </div>
+                    <h1>Attendance</h1>
+                    <Line data={this.state.chartData}/>
                 </div>
             </div>
         );
