@@ -72,3 +72,14 @@
 .loader-container {
     margin-top: 11%;
 }
+
+.text-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+
+#stats {
+    padding-top: 4%;
+    padding-bottom: 8%;
+}

@@ -4,7 +4,7 @@ var debug = process.env.NODE_ENV !== "production";
 
 module.exports = {
 	entry: './js/app.js',
-	mode: 'development',
+	mode: 'production',
 	context: __dirname + "/src",
 	output: {
 		path: __dirname + "/src/",
@@ -26,10 +26,4 @@ module.exports = {
 	stats: {
 		colors: true
 	},
-	devtool: debug ? 'inline-sourcemap' : null,
-	plugins: debug ? [] : [
-		new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
-		new webpack.optimize.OccurrenceOrderPlugin(),
-		new webpack.optimize.DedupePlugin()
-	]
 };

@@ -24,6 +24,7 @@ export default class Statistics extends React.Component {
                     {
                         label: "Attendance",
                         lineTension: 0.5,
+                        scaleStartValue: 0,
                         backgroundColor: 'rgba(255,81,0,0.4)',
                         borderColor: 'rgba(0,174,255,1)',
                         borderCapStyle: 'butt',
@@ -48,11 +49,25 @@ export default class Statistics extends React.Component {
     }
 
     render() {
+        var options = {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 0
+                    }
+                }]
+            },
+            tooltips: {
+                mode: 'index',
+                axis: 'x',
+                intersect: false
+            }
+        };
         return (
-            <div class="container" id="list">
+            <div class="container" id="stats">
                 <div class="row justify-content-center">
-                    <h1>Attendance</h1>
-                    <Line data={this.state.chartData}/>
+                    <h1 class="text-header">Practice Stats</h1>
+                    <Line data={this.state.chartData} options={options}/>
                 </div>
             </div>
         );
